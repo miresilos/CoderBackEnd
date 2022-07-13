@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Lápiz",
+    "price": 60,
+    "thumbnail": "asd",
+    "id": 1
+  },
+  {
+    "title": "Libro",
+    "price": 600,
+    "thumbnail": "asddas",
+    "id": 2
+  },
+  {
+    "title": "Algo bonito",
+    "price": 200,
+    "thumbnail": "adfadsddas",
+    "id": 3
+  }
+]
