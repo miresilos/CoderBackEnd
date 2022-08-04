@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casilla de comentarios</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="../main.js"></script>
+</head>
+<body>
+    <h2>Comentarios</h2>
+
+    <ul id="messages">
+        <%- include('pages/commentBox.ejs'); %>
+    </ul>
+
+    <form onsubmit="return newComment(this)">
+        <input type="text" id="username" placeholder="Nombre" />
+        <input type="text" id="text" placeholder="Cuéntanos algo..." autocomplete="off" />
+        <input type="submit" value="Enviar" id="addComment" />
+    </form>
+</body>
+</html>

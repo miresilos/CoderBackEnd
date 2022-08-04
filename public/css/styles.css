@@ -1,0 +1,159 @@
+/* General styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: aliceblue;
+    overflow-x: hidden;
+}
+
+/* Products section */
+
+h2 {
+    color: white;
+}
+
+.container-bx {
+    width: 680px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.container-bx form {
+    width: 18.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.5s ease-in;
+}
+
+.container-bx form .form_field {
+    width: 300px;
+    padding: 1em;
+    border-radius: 10px;
+    border: black solid 1px;
+    outline: none;
+}
+
+.container-bx form .form_field:focus {
+    border: brown solid 1px;
+}
+
+.container-bx form div {
+    display: flex;
+    justify-content: end;
+}
+
+.container-bx form .form_button {
+    width: 150px;
+    padding: 10px;
+    font-size: 1em;
+    color: whitesmoke;
+    background-color: brown;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.container-bx > div {
+    width: 100%;
+    margin-top: 50px;
+    padding-right: 20px;
+    text-align: end;
+}
+
+a{
+    padding: 10px;
+    font-size: 1em;
+    color: whitesmoke;
+    border-radius: 10px;
+    background-color: brown;
+    text-decoration: none;
+}
+
+table {
+    width: 80% !important;
+    margin: 0 auto;
+    border: solid 1px black !important;
+}
+
+tr td img {
+    width: 76px;
+    height: 46px;
+    border-radius: 6px;
+}
+
+/* Comments section */
+
+.comments-bx {
+    width: 880px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 36px;
+    background-color: rgb(219, 218, 122);
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.comments-bx #commentsList {
+    width: 100%;
+    padding: 50px 30px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comments-bx #commentsList div strong {
+    font-weight: bold;
+    color: green;
+}
+
+.comments-bx form {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.comments-bx form .form_field {
+    width: 200px;
+    padding: 5px 10px;
+    outline: none;
+    border: solid 1px rgb(219, 218, 122);
+    border-radius: 6px;
+}
+
+.comments-bx form .textarea {
+    width: 350px;
+}
+
+.comments-bx form .form_button {
+    width: 150px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1em;
+    color: whitesmoke;
+    background-color: rgb(65, 66, 156);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
