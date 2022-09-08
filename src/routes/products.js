@@ -1,38 +1,47 @@
-const express = require("express");
+import express from "express";
+import { productsDAO } from "../config.js";
+
+
 const productsRouter = express.Router();
-const productsController = require("../controllers/productsController");
 
-productsRouter.get("/", (req, res) => {
-    const products = productsController.list();
-    res.send(products);
-});
-
-productsRouter.get("/:id", (req, res) => {
-    const { id } = req.params;
-    const product = productsController.findOneById(parseInt(id));
-    if (!product) {
-        res.status(404).send({ error: "Producto no encontrado" });
-    } else {
-        res.send(product);
+productsRouter.get("/", async (req, res) => {
+    try {
+        let products = await productsDAO.listAll();
+        res.send(products);
+    } catch (err) {
+        console.log(`There has been an error: ${err}`);
     }
 });
 
-productsRouter.post("/", (req, res) => {
-    const { title, price, thumbnail } = req.body;
-    const product = productsController.add(title, price, thumbnail);
-    res.status(201).send(product);
+productsRouter.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        let product = await productsDAO.list(id);
+        res.send(product);
+    } catch (err) {
+        console.log(`There has been an error: ${err}`);
+    }
 });
 
-productsRouter.put("/:id", (req, res) => {
-    const { id } = req.params;
-    const { title, price, thumbnail } = req.body;
-    const product = productsController.updateById(id, title, price, thumbnail);
+productsRouter.post("/", async (req, res) => {
+    try {
+        const { title, price, thumbnail } = req.body;
+        let savedProduct = await productsDAO.save({ title: title, price: price, thumbnail: thumbnail });
+        res.send(savedProduct);
+    } catch (err) {
+        console.log(`There has been an error: ${err}`);
+    }
+});
+
+productsRouter.put("/", async (req, res) => {
+    const { id, title, price, thumbnail } = req.body;
+    const product = await productsDAO.update({ id: id, title: title, price: price, thumbnail: thumbnail });
     res.send(product);
 });
 
-productsRouter.delete("/:id", (req, res) => {
+productsRouter.delete("/:id", async (req, res) => {
     const { id } = req.params;
-    res.send(productsController.deleteById(id));
+    res.send(productsDAO.delete(id));
 });
 
-module.exports = productsRouter;
+export default productsRouter;

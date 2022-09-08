@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const productsRouter = require("./products");
-const cartRouter = require("./cart");
+import express from "express";
+import productsRouter from "./products.js";
+import cartRouter from "./carts.js";
 
 let administrador = false;
+const router = express.Router();
 
 router.use("/productos", productsRouter);
 router.use("/carrito", cartRouter);
@@ -27,4 +27,4 @@ router.get("*", (req, res) => {
     res.send(invalidRoute(req));
 });
 
-module.exports = router;
+export default router;
