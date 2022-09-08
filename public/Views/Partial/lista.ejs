@@ -1,0 +1,31 @@
+<div id="lista">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imágen</th>
+            </tr>
+        </thead>
+        <tbody id="productsList">
+                    <% if (datos.length===0) { %>
+            <tr>
+                <td colspan="3">
+                    <center>No hay productos para mostrar</center>
+                </td>
+            </tr>
+            <% }else{ %>
+
+                <% for (let i=0; i < datos.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%=datos[i].name%>
+                        </td>
+                        <td>$<%=datos[i].price%>
+                        </td>
+                        <td><%=datos[i].thumbnail%></td>
+                    </tr>
+                    <% } } %>
+        </tbody>
+    </table>
+</div>
