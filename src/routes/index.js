@@ -1,30 +1,35 @@
-import express from "express";
-import productsRouter from "./products.js";
-import cartRouter from "./carts.js";
+import { Router } from "express";
+import loginRouter from "./login.js";
+import registerRouter from "./register.js";
+import logoutRouter from "./logout.js";
+import mainRouter from "./main.js";
+import { dataProd } from "../db/dataProd.js";
 
-let administrador = false;
-const router = express.Router();
+const router = Router();
 
-router.use("/productos", productsRouter);
-router.use("/carrito", cartRouter);
+router.use("/login", loginRouter);
+router.use("/register", registerRouter);
+router.use("/logout", logoutRouter);
+router.use("/main", mainRouter);
 
-const invalidRoute = (req) => {
-    const url = req.originalUrl;
-    const method = req.method;
-    return { error: -2, description: `Ruta ${url} inexistente. Método ${method} no implementado.` };
-};
+router.get("/", (req, res) => {
+    if (req.session.nombre) {
+      res.redirect("/api/index");
+    } else {
+      res.redirect("/api/login");
+    }
+});
+  
+router.get("/login-error", (req, res) => {
+    res.render("login-error");
+});
 
-router.get("*", (req, res) => {
-    res.send(invalidRoute(req));
-})
-.post("*", (req, res) => {
-    res.send(invalidRoute(req));
-})
-.delete("*", (req, res) => {
-    res.send(invalidRoute(req));
-})
-.put("*", (req, res) => {
-    res.send(invalidRoute(req));
+router.post("/", (req, res) => {
+    const { title, price, thumbnail } = req.body;
+    const productData = { title: title, price: price, thumbnail: thumbnail };
+    dataProd.push(productData);
+
+    res.redirect("/api/main");
 });
 
 export default router;
