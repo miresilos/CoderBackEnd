@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-mongoose.connect("mongodb+srv://miresilos:<password>@cluster0.vgm74j9.mongodb.net/?retryWrites=true&w=majority");
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_CONNECTION);
 
 export default mongoose;

@@ -11,6 +11,10 @@ import { Strategy } from "passport-local";
 const LocalStrategy = Strategy;
 import "./src/db/config.js";
 import router from "./src/routes/index.js";
+import minimist from "minimist";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -20,7 +24,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
   session({
-    secret: "1234567890!@#$%^&*()",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -75,7 +79,8 @@ app.use("/api", router);
 
 /*============================[Servidor]============================*/
 
-const PORT = 8080;
+const PORT = minimist(process.argv.slice(2)).port || 8080;
+
 const server = app.listen(PORT, () => {
   console.log(`Servidor escuchando en puerto ${PORT}`);
 });
