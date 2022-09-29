@@ -1,9 +1,0 @@
-<% if (comments.length === 0) { %>
-    <h3>¡Se el primero en comentar!</h3>
-<% } else { %>
-<% for (let i = 0; i < comments.length; i++) { %>
-    <div>
-        <strong><%=comments[i].email%></strong>
-        <em><%=comments[i].text%></em>
-    </div>
-<% } } %>
