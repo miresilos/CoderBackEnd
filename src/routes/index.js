@@ -14,7 +14,7 @@ router.use("/register", registerRouter);
 router.use("/logout", logoutRouter);
 router.use("/main", mainRouter);
 router.use("/info", infoRouter);
-router.use("/random", randomRouter);
+router.use("/randoms", randomRouter);
 
 // SESSION
 router.get("/", (req, res) => {
