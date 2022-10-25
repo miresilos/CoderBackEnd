@@ -13,6 +13,7 @@ import "./src/db/config.js";
 import router from "./src/routes/index.js";
 import minimist from "minimist";
 import dotenv from "dotenv";
+import compression from "compression";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(
     },
   })
 );
+app.use(compression());
 
 app.use(passport.initialize());
 app.use(passport.session());
